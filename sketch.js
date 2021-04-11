@@ -14,7 +14,10 @@ var endline,canvas;
 
 function preload() 
 {
+//preloading background image
   spaceImage = loadImage("space.jpg");
+  
+  //preloading sprite images
   boyImage = loadImage("boy.png");
   laserImage = loadImage("laser.png");
   alien1 = loadImage("alien1.png");
@@ -27,10 +30,13 @@ function preload()
 
 function setup() {  
   canvas = createCanvas(1500, 700);
+  
+  //add background image
   space = createSprite(500, 0, 500, 500);
   space.addImage(spaceImage);
   space.velocityY = (5 + score/10);
-
+  
+  //adding image for boy 
   boy = createSprite(250,600);
   boy.addImage(boyImage);
   boy.scale = 0.3;
@@ -110,6 +116,7 @@ function draw() {
     textSize(30);
     text("score : " + score,210,60)
     
+    // ending of game
     if(alienGroup.isTouching(endline)) {
       alienGroup.destroyEach();
       gameState = end;
